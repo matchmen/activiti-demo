@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-    url: jdbc:mysql://172.16.4.12:3306/activiti?characterEncoding=utf8&nullCatalogMeansCurrent=true&serverTimezone=GMT&useSSL=false
+    url: jdbc:mysql://localhost:3306/activiti?characterEncoding=utf8&nullCatalogMeansCurrent=true&serverTimezone=GMT&useSSL=false
     username: root
-    password: 123456
+    password: root
 
   activiti:
     # 启动是否更新表解耦股
@@ -17,8 +17,16 @@ spring:
     history-level: full
     #检测身份信息表是否存在
     db-identity-used: false
-
+  liquibase:
+    enabled: false
+    change-log: classpath:changelog.xml
+  contentstorage:
+    fs:
+      rootFolder: /data
+      createRoot: true
+      depth: 4
+      blockSize: 1024
 
 logging:
   level:
-    root: debug
+    root: info
