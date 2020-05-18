@@ -29,11 +29,21 @@ public class UserInfoTest {
         zhangsan.setPassword("111");
         identityService.saveUser(zhangsan);
 
+        User zhaoer = identityService.newUser("zhaoer");
+        zhaoer.setFirstName("赵二");
+        zhaoer.setPassword("111");
+        identityService.saveUser(zhaoer);
+
         //增加项目经理李四 用户ID:lisi
         User lisi = identityService.newUser("lisi");
         lisi.setFirstName("李四");
         lisi.setPassword("111");
         identityService.saveUser(lisi);
+
+        User wanger = identityService.newUser("wanger");
+        wanger.setFirstName("王二");
+        wanger.setPassword("111");
+        identityService.saveUser(wanger);
 
         User wangwu = identityService.newUser("wangwu");
         wangwu.setFirstName("王五");
@@ -70,6 +80,8 @@ public class UserInfoTest {
         identityService.createMembership("zhangsan","employee");
         identityService.createMembership("lisi","programManager");
         identityService.createMembership("wangwu","departmentManager");
+        identityService.createMembership("zhaoer","programManager");
+        identityService.createMembership("wanger","employee");
     }
 
 

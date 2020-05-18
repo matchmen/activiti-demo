@@ -199,7 +199,7 @@ public class ModelerController {
         logger.info("删除流程模型,modelId:{}",modelId);
         repositoryService.deleteModel(modelId);
         try {
-            response.sendRedirect("/index");
+            response.sendRedirect("/listModeler");
         } catch (IOException e) {
             e.printStackTrace();
         }
