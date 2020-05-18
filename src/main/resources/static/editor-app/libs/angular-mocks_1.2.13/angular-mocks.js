@@ -814,7 +814,7 @@ angular.mock.animate = angular.module('ngAnimateMock', ['ng'])
  *
  * *NOTE*: this is not an injectable instance, just a globally available function.
  *
- * Method for serializing util angular objects (scope, elements, etc..) into strings, useful for
+ * Method for serializing common angular objects (scope, elements, etc..) into strings, useful for
  * debugging.
  *
  * This method is also available on window, where it can be used to display objects on debug
@@ -1013,7 +1013,7 @@ angular.mock.dump = function(object) {
        beforeEach(inject(function($injector) {
          // Set up the mock http service responses
          $httpBackend = $injector.get('$httpBackend');
-         // backend definition util for all tests
+         // backend definition common for all tests
          $httpBackend.when('GET', '/auth.py').respond({userId: 'userX'}, {'A-Token': 'xxx'});
 
          // Get hold of a scope (i.e. the root scope)

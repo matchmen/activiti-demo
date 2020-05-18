@@ -26,15 +26,18 @@ public class UserInfoTest {
         //增加普通员工张三 用户ID:zhangsan
         User zhangsan = identityService.newUser("zhangsan");
         zhangsan.setFirstName("张三");
+        zhangsan.setPassword("111");
         identityService.saveUser(zhangsan);
 
         //增加项目经理李四 用户ID:lisi
         User lisi = identityService.newUser("lisi");
         lisi.setFirstName("李四");
+        lisi.setPassword("111");
         identityService.saveUser(lisi);
 
         User wangwu = identityService.newUser("wangwu");
         wangwu.setFirstName("王五");
+        wangwu.setPassword("111");
         identityService.saveUser(wangwu);
     }
 

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>工作流模型列表</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="panel panel-default" style="margin: 10px" >
+    <div class="panel-heading">工作流管理</div>
+    <div class="panel-body">
+        <a href="/create" target="_blank">
+            <button type="button" class="btn btn-default" aria-label="Left Align">
+                创建模型
+            </button>
+        </a>
+    </div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th width="10%">模型编号</th>
+            <th width="10%">版本</th>
+            <th width="20%">模型key</th>
+            <th width="30%">模型名称</th>
+            <th width="30%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item:${list}">
+            <th scope="row" th:text="${item.id}"></th>
+            <td th:text="${item.version}"></td>
+            <td th:text="${item.key}"></td>
+            <td th:text="${item.name}"></td>
+            <td>
+                <a th:href="@{'/publish?modelId='+${item.id}}" >部署</a>
+                <a th:href="@{'/startProcess?processDefinitionKey='+${item.key}}" >发起流程</a>
+                <a th:href="@{'/revokePublish?modelId='+${item.id}}">撤销</a>
+                <a th:href="@{'/editor?modelId='+${item.id}}">编辑</a>
+                <a th:href="@{'/delete?modelId='+${item.id}}">删除</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

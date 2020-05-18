@@ -308,7 +308,7 @@ if (!Array.isArray) {
 // V8 are regular expression literals permitted as
 // reduce parameters, so it is desirable in the
 // general case for the shim to match the more
-// strict and util behavior of rejecting regular
+// strict and common behavior of rejecting regular
 // expressions.
 
 // ES5 15.4.4.18

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>流程实例管理</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="panel panel-default" style="margin: 10px" >
+    <div class="panel-heading">流程实例管理</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th width="10%">流程实例编号</th>
+            <th width="10%">名称</th>
+            <th width="10%">描述</th>
+            <th width="30%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item:${list}">
+            <th scope="row" th:text="${item.id}"></th>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.description}"></td>
+            <td>
+                <a th:href="@{'/instanceDetail?modelId='+${item.id}}">详情</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>待办</title>
+    <link rel="stylesheet" href="bootstrap-3.3.7-dist/css/bootstrap.min.css">
+    <script src="js/jquery.min.js"></script>
+    <script src="bootstrap-3.3.7-dist/js/bootstrap.min.js"></script>
+</head>
+<body>
+<div class="panel panel-default" style="margin: 10px" >
+    <div class="panel-heading">待办管理</div>
+    <table class="table">
+        <thead>
+        <tr>
+            <th width="10%">部署流程编号</th>
+            <th width="10%">名称</th>
+            <th width="10%">eventName</th>
+            <th width="30%">操作</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="item:${list}">
+            <th scope="row" th:text="${item.id}"></th>
+            <td th:text="${item.name}"></td>
+            <td th:text="${item.eventName}"></td>
+            <td>
+                <a th:href="@{'/completeTask?taskId='+${item.id}}">处理</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>

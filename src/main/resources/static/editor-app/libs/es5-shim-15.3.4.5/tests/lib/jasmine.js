@@ -1201,7 +1201,7 @@ jasmine.Matchers.prototype.toNotBe = function(expected) {
 };
 
 /**
- * toEqual: compares the actual to the expected using util sense equality. Handles Objects, Arrays, etc.
+ * toEqual: compares the actual to the expected using common sense equality. Handles Objects, Arrays, etc.
  *
  * @param expected
  */
