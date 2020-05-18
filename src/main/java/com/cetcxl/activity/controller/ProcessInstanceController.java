@@ -112,6 +112,7 @@ public class ProcessInstanceController {
         taskService.claim(taskId,userId);
         //添加批注
         taskService.addComment(taskId, null, comment);
+
         taskService.complete(taskId);
 
         return "SUCCESS";
