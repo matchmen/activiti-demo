@@ -15,7 +15,6 @@
         <tr>
             <th width="10%">部署流程编号</th>
             <th width="10%">名称</th>
-            <th width="10%">KEY</th>
             <th width="20%">部署时间</th>
             <th width="30%">操作</th>
         </tr>
@@ -24,7 +23,6 @@
         <tr th:each="item:${list}">
             <th scope="row" th:text="${item.id}"></th>
             <td th:text="${item.name}"></td>
-            <td th:text="${item.key}"></td>
             <td th:text="${item.deploymentTime}"></td>
             <td>
                 <a th:href="@{'/revokePublish?deploymentId='+${item.id}}">撤销</a>

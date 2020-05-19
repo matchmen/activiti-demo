@@ -10,6 +10,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import java.util.List;
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes = ActivityDemoApplication.class)
 public class UserInfoTest {
@@ -23,7 +25,7 @@ public class UserInfoTest {
      */
     @Test
     public void initUser(){
-        //增加普通员工张三 用户ID:zhangsan
+/*        //增加普通员工张三 用户ID:zhangsan
         User zhangsan = identityService.newUser("zhangsan");
         zhangsan.setFirstName("张三");
         zhangsan.setPassword("111");
@@ -48,7 +50,12 @@ public class UserInfoTest {
         User wangwu = identityService.newUser("wangwu");
         wangwu.setFirstName("王五");
         wangwu.setPassword("111");
-        identityService.saveUser(wangwu);
+        identityService.saveUser(wangwu);*/
+
+        User liwu = identityService.newUser("liwu");
+        liwu.setFirstName("李四");
+        liwu.setPassword("111");
+        identityService.saveUser(liwu);
     }
 
     /**
@@ -83,6 +90,21 @@ public class UserInfoTest {
         identityService.createMembership("zhaoer","programManager");
         identityService.createMembership("wanger","employee");
     }
+
+    @Test
+    public void getUser() {
+        List<String> lisi1 = identityService.getUserInfoKeys("lisi");
+
+        System.out.println(lisi1.size());
+
+    }
+
+
+    @Test
+    public void getGroup() {
+        long potentialOwners = identityService.createUserQuery().memberOfGroup("management").count();
+    }
+
 
 
 }

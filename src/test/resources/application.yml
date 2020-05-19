@@ -1,16 +1,19 @@
 server:
   port: 8090
 spring:
+  #  security:
+  #    basic:
+  #      enabled: false
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     #url: jdbc:mysql://172.16.4.12:3306/activiti?characterEncoding=utf8
-    url: jdbc:mysql://localhost:3306/activiti?characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/act?characterEncoding=utf8
     username: root
     password: root
 
   activiti:
     # 启动是否更新表解耦股
-    database-schema-update: false
+    database-schema-update: true
     #自动部署认证
     check-process-definitions: false
     #流程描述文件的前缀(路径)
@@ -23,7 +26,6 @@ spring:
 
   thymeleaf:
     cache: false
-
 
 
 logging:

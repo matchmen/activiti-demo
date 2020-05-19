@@ -35,7 +35,7 @@ public class ProcessDeploymentTest {
         Deployment deployment = repositoryService.createDeployment().addClasspathResource("processes/a.bpmn").deploy();
         System.out.println("ID："+deployment.getId());
         System.out.println("name:"+deployment.getName());
-        System.out.println("key:"+deployment.getKey());
+        //System.out.println("key:"+deployment.getKey());
     }
 
     /**

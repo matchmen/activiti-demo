@@ -1,10 +1,8 @@
 package com.cetcxl.activiti;
 
 import com.cetcxl.activity.ActivityDemoApplication;
-import org.activiti.engine.HistoryService;
-import org.activiti.engine.IdentityService;
-import org.activiti.engine.RuntimeService;
-import org.activiti.engine.TaskService;
+import org.activiti.engine.*;
+import org.activiti.engine.history.HistoricProcessInstance;
 import org.activiti.engine.history.HistoricTaskInstance;
 import org.activiti.engine.history.HistoricTaskInstanceQuery;
 import org.activiti.engine.runtime.ProcessInstance;
@@ -16,6 +14,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
+import javax.imageio.ImageIO;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.InputStream;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -32,6 +35,9 @@ public class ProcessInstanceTest {
     private TaskService taskService;
     @Autowired
     private HistoryService historyService;
+    @Autowired
+    private RepositoryService repositoryService;
+
     /**
      * 发起流程
      * 发起人：张三
@@ -61,7 +67,7 @@ public class ProcessInstanceTest {
         processInstances.stream().forEach(processInstance -> {
 
             System.out.println("instance name:"+processInstance.getName());
-            System.out.println("instance start user id:"+processInstance.getStartUserId());
+            //System.out.println("instance start user id:"+processInstance.getStartUserId());
 
         });
     }
@@ -125,6 +131,39 @@ public class ProcessInstanceTest {
         });
 
     }
+
+    /**
+     *
+     * <p>描述:  生成流程图
+     * 首先启动流程，获取processInstanceId，替换即可生成</p>
+     * @author 范相如
+     * @date 2018年2月25日
+     * @throws Exception
+     */
+    @Test
+    public void queryProImg() throws Exception {
+        String processInstanceId = "15036";
+        //获取历史流程实例
+        HistoricProcessInstance processInstance =  historyService.createHistoricProcessInstanceQuery().processInstanceId(processInstanceId).singleResult();
+
+        //根据流程定义获取输入流
+        InputStream is = repositoryService.getProcessDiagram(processInstance.getProcessDefinitionId());
+        BufferedImage bi = ImageIO.read(is);
+        File file = new File("demo2.png");
+        if(!file.exists()) file.createNewFile();
+        FileOutputStream fos = new FileOutputStream(file);
+        ImageIO.write(bi, "png", fos);
+        fos.close();
+        is.close();
+        System.out.println("图片生成成功");
+
+        List<Task> tasks = taskService.createTaskQuery().taskCandidateUser("userId").list();
+        for(Task t : tasks) {
+            System.out.println(t.getName());
+        }
+    }
+
+
 
 
 }

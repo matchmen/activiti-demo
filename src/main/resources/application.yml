@@ -7,7 +7,7 @@ spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
     #url: jdbc:mysql://172.16.4.12:3306/activiti?characterEncoding=utf8
-    url: jdbc:mysql://localhost:3306/activiti?characterEncoding=utf8
+    url: jdbc:mysql://localhost:3306/act?characterEncoding=utf8
     username: root
     password: root
 
@@ -22,10 +22,15 @@ spring:
     #process-definition-location-suffixes: .bpmn
     history-level: full
     #检测身份信息表是否存在
-    db-identity-used: true
+    db-identity-used: false
 
   thymeleaf:
     cache: false
+
+  jpa:
+    ddl-auto: update
+    show-sql: true
+    generate-ddl: true
 
 
 logging:
