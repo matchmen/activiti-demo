@@ -66,7 +66,9 @@ public class ProcessInstanceController {
         map.put("days", days);
         map.put("startDate", startDate);
         map.put("endDate", endDate);
-        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey,map);
+        String bussKey = processDefinitionKey + "." + 111;
+        ProcessInstance processInstance = runtimeService.startProcessInstanceByKey(processDefinitionKey,bussKey,map);
+
         logger.info("流程实例ID:{}", processInstance.getId());
         try {
             response.sendRedirect("/listInstance");
@@ -113,8 +115,9 @@ public class ProcessInstanceController {
         //添加批注
         taskService.addComment(taskId, null, comment);
 
-        taskService.complete(taskId,map);
+        taskService.complete(taskId, map);
 
+        //runtimeService.signal("");
         return "SUCCESS";
     }
 

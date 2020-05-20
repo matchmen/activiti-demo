@@ -22,7 +22,7 @@ spring:
     #process-definition-location-suffixes: .bpmn
     history-level: full
     #检测身份信息表是否存在
-    db-identity-used: false
+    db-identity-used: true
 
   thymeleaf:
     cache: false
@@ -30,7 +30,7 @@ spring:
   jpa:
     ddl-auto: update
     show-sql: true
-    generate-ddl: true
+    generate-ddl: false
 
 
 logging:

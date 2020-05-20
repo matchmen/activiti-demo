@@ -163,7 +163,13 @@ public class ProcessInstanceTest {
         }
     }
 
+    @Test
+    public void processInstanceDetail() {
+        List<ProcessInstance> list = runtimeService.createProcessInstanceQuery().processInstanceBusinessKey("Leave_1589941211660.111").list();
 
+        System.out.println(list);
+        System.out.println(list.size());
+    }
 
 
 }
